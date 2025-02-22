@@ -1,0 +1,221 @@
+/* Home Section Styles */
+#home {
+    position: relative;
+    background: none; /* Remove the previous gradient background */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+    overflow: hidden;
+}
+
+.home-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/developer-bg.jpg'); /* Add your image path here */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15; /* Adjust the opacity of the background image */
+    z-index: 1;
+}
+
+.home-content {
+    position: relative;
+    z-index: 2; /* Place content above the background */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: linear-gradient(
+        to right,
+        rgba(248, 249, 250, 0.9),
+        rgba(233, 236, 239, 0.8)
+    );
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.home-text {
+    max-width: 800px;
+}
+
+.greeting {
+    font-size: 1.2rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+.home-text h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #212529;
+}
+
+.highlight {
+    color: #007bff;
+    position: relative;
+}
+
+.home-text h2 {
+    font-size: 2.5rem;
+    color: #495057;
+    margin-bottom: 1.5rem;
+}
+
+.tagline {
+    font-size: 1.5rem;
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+}
+
+.description {
+    font-size: 1.1rem;
+    color: #495057;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+.cta-buttons {
+    margin-bottom: 3rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    margin-right: 1rem;
+    border-radius: 5px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn.primary {
+    background: #007bff;
+    color: white;
+    border: 2px solid #007bff;
+}
+
+.btn.secondary {
+    background: transparent;
+    color: #007bff;
+    border: 2px solid #007bff;
+}
+
+.btn.outline {
+    background: transparent;
+    color: #6c757d;
+    border: 2px solid #6c757d;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.tech-stack {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid #dee2e6;
+}
+
+.tech-stack p {
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.tech-icons {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.tech-icons i {
+    font-size: 2rem;
+    color: #495057;
+    transition: all 0.3s ease;
+}
+
+.tech-icons i:hover {
+    color: #007bff;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .home-content {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .home-text h1 {
+        font-size: 3rem;
+    }
+
+    .home-text h2 {
+        font-size: 2rem;
+    }
+
+    .tagline {
+        font-size: 1.2rem;
+    }
+
+    .cta-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn {
+        margin-right: 0;
+        text-align: center;
+    }
+
+    .tech-stack {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+/* Contact Section Styles */
+.contact-info {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.contact-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: #f8f9fa;
+    border-radius: 25px;
+    margin-bottom: 1rem;
+}
+
+.contact-item i {
+    color: #007bff;
+    font-size: 1.2rem;
+}
+
+.contact-item a {
+    color: #495057;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: #007bff;
+}
+
+/* Update existing contact form styles */
+#contact-form {
+    margin-top: 2rem;
+} 
