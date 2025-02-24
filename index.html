@@ -37,7 +37,8 @@
             opacity: 1 !important;
         }
         
-        .project1-slideshow img {
+        .project1-slideshow img,
+        .project2-slideshow img {
             transition: opacity 0.5s ease-in-out;
         }
     </style>
@@ -156,7 +157,34 @@
                 </div>
 
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition hover:-translate-y-2">
-                    <img src="project2-image.jpg" alt="Project 2" class="w-full h-48 object-cover">
+                    <div class="relative h-48">
+                        <div class="project2-slideshow">
+                            <img src="project2/1.png" alt="Project 2 Screenshot 1" class="w-full h-48 object-cover">
+                            <img src="project2/2.png" alt="Project 2 Screenshot 2" class="w-full h-48 object-cover hidden">
+                            <img src="project2/3.png" alt="Project 2 Screenshot 3" class="w-full h-48 object-cover hidden">
+                            <img src="project2/4.png" alt="Project 2 Screenshot 4" class="w-full h-48 object-cover hidden">
+                            <img src="project2/5.png" alt="Project 2 Screenshot 5" class="w-full h-48 object-cover hidden">
+                            <img src="project2/6.png" alt="Project 2 Screenshot 6" class="w-full h-48 object-cover hidden">
+                            <img src="project2/7.png" alt="Project 2 Screenshot 7" class="w-full h-48 object-cover hidden">
+                        </div>
+                        <!-- Navigation buttons -->
+                        <button class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70" onclick="changeSlide(-1, 'project2-slideshow')">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70" onclick="changeSlide(1, 'project2-slideshow')">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <!-- Dots -->
+                        <div class="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
+                            <span class="w-2 h-2 bg-white rounded-full opacity-50 cursor-pointer dot active" onclick="currentSlide(0, 'project2-slideshow')"></span>
+                            <span class="w-2 h-2 bg-white rounded-full opacity-50 cursor-pointer dot" onclick="currentSlide(1, 'project2-slideshow')"></span>
+                            <span class="w-2 h-2 bg-white rounded-full opacity-50 cursor-pointer dot" onclick="currentSlide(2, 'project2-slideshow')"></span>
+                            <span class="w-2 h-2 bg-white rounded-full opacity-50 cursor-pointer dot" onclick="currentSlide(3, 'project2-slideshow')"></span>
+                            <span class="w-2 h-2 bg-white rounded-full opacity-50 cursor-pointer dot" onclick="currentSlide(4, 'project2-slideshow')"></span>
+                            <span class="w-2 h-2 bg-white rounded-full opacity-50 cursor-pointer dot" onclick="currentSlide(5, 'project2-slideshow')"></span>
+                            <span class="w-2 h-2 bg-white rounded-full opacity-50 cursor-pointer dot" onclick="currentSlide(6, 'project2-slideshow')"></span>
+                        </div>
+                    </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold text-gray-900 mb-2">E-Commerce Platform</h3>
                         <p class="text-gray-600 mb-4">A full-featured online store built with React, Node.js, and MongoDB. Features include user authentication, product management, and payment integration.</p>

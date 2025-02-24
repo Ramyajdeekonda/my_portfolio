@@ -40,7 +40,10 @@ window.addEventListener('scroll', () => {
     });
 });
 
-let slideIndex = {};
+let slideIndex = {
+    'project1-slideshow': 0,
+    'project2-slideshow': 0
+};
 let slideshowIntervals = {};
 
 function initSlideshow(slideshowClass) {
@@ -58,64 +61,36 @@ function initSlideshow(slideshowClass) {
     }, 5000);
 }
 
-function changeSlide(direction, slideshowClass) {
-    // Reset the interval when manually changing slides
-    if (slideshowIntervals[slideshowClass]) {
-        clearInterval(slideshowIntervals[slideshowClass]);
-    }
-    
-    showSlides(slideIndex[slideshowClass] + direction, slideshowClass);
-    
-    // Restart the interval
-    slideshowIntervals[slideshowClass] = setInterval(() => {
-        changeSlide(1, slideshowClass);
-    }, 5000);
+function changeSlide(n, slideshowClass) {
+    showSlides(slideIndex[slideshowClass] += n, slideshowClass);
 }
 
-function currentSlide(index, slideshowClass) {
-    // Reset the interval when manually selecting a slide
-    if (slideshowIntervals[slideshowClass]) {
-        clearInterval(slideshowIntervals[slideshowClass]);
-    }
-    
-    showSlides(index, slideshowClass);
-    
-    // Restart the interval
-    slideshowIntervals[slideshowClass] = setInterval(() => {
-        changeSlide(1, slideshowClass);
-    }, 5000);
+function currentSlide(n, slideshowClass) {
+    showSlides(slideIndex[slideshowClass] = n, slideshowClass);
 }
 
-function showSlides(newIndex, slideshowClass) {
-    const slideshow = document.querySelector(`.${slideshowClass}`);
-    const slides = slideshow.getElementsByTagName('img');
-    const dots = slideshow.parentElement.getElementsByClassName('dot');
+function showSlides(n, slideshowClass) {
+    let slides = document.querySelector('.' + slideshowClass).getElementsByTagName('img');
+    let dots = document.querySelector('.' + slideshowClass).parentElement.getElementsByClassName('dot');
     
-    // Handle wraparound
-    if (newIndex >= slides.length) newIndex = 0;
-    if (newIndex < 0) newIndex = slides.length - 1;
-    
-    // Update slideIndex
-    slideIndex[slideshowClass] = newIndex;
+    if (n >= slides.length) { slideIndex[slideshowClass] = 0; }
+    if (n < 0) { slideIndex[slideshowClass] = slides.length - 1; }
     
     // Hide all slides
     for (let i = 0; i < slides.length; i++) {
         slides[i].classList.add('hidden');
-        if (dots[i]) {  // Check if dot exists
-            dots[i].classList.remove('active');
-            dots[i].classList.add('opacity-50');
-        }
+        dots[i].classList.remove('active');
     }
     
     // Show current slide
-    slides[newIndex].classList.remove('hidden');
-    if (dots[newIndex]) {  // Check if dot exists
-        dots[newIndex].classList.add('active');
-        dots[newIndex].classList.remove('opacity-50');
-    }
+    slides[slideIndex[slideshowClass]].classList.remove('hidden');
+    dots[slideIndex[slideshowClass]].classList.add('active');
 }
 
-// Initialize slideshows when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    initSlideshow('project1-slideshow');
+// Initialize all slideshows
+document.addEventListener('DOMContentLoaded', function() {
+    let slideshows = ['project1-slideshow', 'project2-slideshow'];
+    slideshows.forEach(function(slideshow) {
+        showSlides(0, slideshow);
+    });
 }); 
