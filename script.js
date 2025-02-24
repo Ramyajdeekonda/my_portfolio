@@ -38,4 +38,84 @@ window.addEventListener('scroll', () => {
             link.classList.add('active');
         }
     });
+});
+
+let slideIndex = {};
+let slideshowIntervals = {};
+
+function initSlideshow(slideshowClass) {
+    slideIndex[slideshowClass] = 0;
+    showSlides(0, slideshowClass);
+
+    // Clear any existing interval
+    if (slideshowIntervals[slideshowClass]) {
+        clearInterval(slideshowIntervals[slideshowClass]);
+    }
+
+    // Auto advance slides every 5 seconds
+    slideshowIntervals[slideshowClass] = setInterval(() => {
+        changeSlide(1, slideshowClass);
+    }, 5000);
+}
+
+function changeSlide(direction, slideshowClass) {
+    // Reset the interval when manually changing slides
+    if (slideshowIntervals[slideshowClass]) {
+        clearInterval(slideshowIntervals[slideshowClass]);
+    }
+    
+    showSlides(slideIndex[slideshowClass] + direction, slideshowClass);
+    
+    // Restart the interval
+    slideshowIntervals[slideshowClass] = setInterval(() => {
+        changeSlide(1, slideshowClass);
+    }, 5000);
+}
+
+function currentSlide(index, slideshowClass) {
+    // Reset the interval when manually selecting a slide
+    if (slideshowIntervals[slideshowClass]) {
+        clearInterval(slideshowIntervals[slideshowClass]);
+    }
+    
+    showSlides(index, slideshowClass);
+    
+    // Restart the interval
+    slideshowIntervals[slideshowClass] = setInterval(() => {
+        changeSlide(1, slideshowClass);
+    }, 5000);
+}
+
+function showSlides(newIndex, slideshowClass) {
+    const slideshow = document.querySelector(`.${slideshowClass}`);
+    const slides = slideshow.getElementsByTagName('img');
+    const dots = slideshow.parentElement.getElementsByClassName('dot');
+    
+    // Handle wraparound
+    if (newIndex >= slides.length) newIndex = 0;
+    if (newIndex < 0) newIndex = slides.length - 1;
+    
+    // Update slideIndex
+    slideIndex[slideshowClass] = newIndex;
+    
+    // Hide all slides
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.add('hidden');
+        if (dots[i]) {  // Check if dot exists
+            dots[i].classList.remove('active');
+            dots[i].classList.add('opacity-50');
+        }
+    }
+    
+    // Show current slide
+    slides[newIndex].classList.remove('hidden');
+    if (dots[newIndex]) {  // Check if dot exists
+        dots[newIndex].classList.add('active');
+        dots[newIndex].classList.remove('opacity-50');
+    }
+}
+
+// Initialize slideshows when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    initSlideshow('project1-slideshow');
 }); 

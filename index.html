@@ -33,41 +33,29 @@
             background-clip: text;
             color: transparent;
         }
-        @keyframes colorShift {
-            0% { color: #38bdf8; } /* Sky-400 */
-            25% { color: #ec4899; } /* Pink-500 */
-            50% { color: #d946ef; } /* Fuchsia-500 */
-            75% { color: #a855f7; } /* Purple-500 */
-            100% { color: #38bdf8; } /* Sky-400 */
+        .dot.active {
+            opacity: 1 !important;
         }
-        .color-shift {
-            animation: colorShift 5s linear infinite;
-        }
-        .frosted-glass {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        .text-shadow {
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        
+        .project1-slideshow img {
+            transition: opacity 0.5s ease-in-out;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-shadow">
+<body class="bg-gray-50">
     <!-- Navigation -->
-    <nav class="fixed w-full shadow-md z-50 frosted-glass">
+    <nav class="fixed w-full bg-white shadow-md z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
                     <a href="#" class="text-xl font-bold text-gray-800">Portfolio</a>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-gray-600 hover:text-blue-600 transition-colors color-shift">Home</a>
-                    <a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors color-shift">About</a>
-                    <a href="#projects" class="text-gray-600 hover:text-blue-600 transition-colors color-shift">Projects</a>
-                    <a href="#skills" class="text-gray-600 hover:text-blue-600 transition-colors color-shift">Skills</a>
-                    <a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors color-shift">Contact</a>
+                    <a href="#home" class="text-gray-600 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors">About</a>
+                    <a href="#projects" class="text-gray-600 hover:text-blue-600 transition-colors">Projects</a>
+                    <a href="#skills" class="text-gray-600 hover:text-blue-600 transition-colors">Skills</a>
+                    <a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
                 </div>
             </div>
         </div>
@@ -77,7 +65,7 @@
     <section id="home" class="min-h-screen relative pt-16 pb-32">
         <div class="absolute inset-0 bg-[url('images/developer-bg.jpg')] bg-cover bg-center opacity-15 z-0"></div>
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32">
-            <div class="frosted-glass rounded-3xl p-8 shadow-xl">
+            <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl">
                 <div class="max-w-3xl">
                     <p class="text-gray-600 text-lg mb-4">👋 Hello, I'm</p>
                     <h1 class="text-5xl font-bold text-gray-900 mb-4">
@@ -113,7 +101,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white text-shadow">
+    <section id="about" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">About Me</h2>
             <div class="max-w-3xl mx-auto">
@@ -124,28 +112,78 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-gray-50 text-shadow">
+    <section id="projects" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">My Projects</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition hover:-translate-y-2">
-                    <img src="project1-image.jpg" alt="Project 1" class="w-full h-48 object-cover">
+                    <div class="relative h-48">
+                        <div class="project1-slideshow">
+                            <img src="project1/1.png" alt="Project 1 Screenshot 1" class="w-full h-48 object-cover">
+                            <img src="project1/2.png" alt="Project 1 Screenshot 2" class="w-full h-48 object-cover hidden">
+                            <img src="project1/3.png" alt="Project 1 Screenshot 3" class="w-full h-48 object-cover hidden">
+                            <img src="project1/4.png" alt="Project 1 Screenshot 4" class="w-full h-48 object-cover hidden">
+                            <img src="project1/5.png" alt="Project 1 Screenshot 5" class="w-full h-48 object-cover hidden">
+                            <img src="project1/6.png" alt="Project 1 Screenshot 6" class="w-full h-48 object-cover hidden">
+                            <img src="project1/7.png" alt="Project 1 Screenshot 7" class="w-full h-48 object-cover hidden">
+                        </div>
+                        <!-- Navigation buttons -->
+                        <button class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70" onclick="changeSlide(-1, 'project1-slideshow')">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70" onclick="changeSlide(1, 'project1-slideshow')">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <!-- Dots -->
+                        <div class="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
+                            <span class="w-2 h-2 bg-white rounded-full opacity-50 cursor-pointer dot active" onclick="currentSlide(0, 'project1-slideshow')"></span>
+                            <span class="w-2 h-2 bg-white rounded-full opacity-50 cursor-pointer dot" onclick="currentSlide(1, 'project1-slideshow')"></span>
+                            <span class="w-2 h-2 bg-white rounded-full opacity-50 cursor-pointer dot" onclick="currentSlide(2, 'project1-slideshow')"></span>
+                            <span class="w-2 h-2 bg-white rounded-full opacity-50 cursor-pointer dot" onclick="currentSlide(3, 'project1-slideshow')"></span>
+                            <span class="w-2 h-2 bg-white rounded-full opacity-50 cursor-pointer dot" onclick="currentSlide(4, 'project1-slideshow')"></span>
+                            <span class="w-2 h-2 bg-white rounded-full opacity-50 cursor-pointer dot" onclick="currentSlide(5, 'project1-slideshow')"></span>
+                            <span class="w-2 h-2 bg-white rounded-full opacity-50 cursor-pointer dot" onclick="currentSlide(6, 'project1-slideshow')"></span>
+                        </div>
+                    </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold text-gray-900 mb-2">Social App</h3>
-                        <p class="text-gray-600 mb-4">Project description goes here. Explain what you built and the technologies used.</p>
+                        <p class="text-gray-600 mb-4">A full-stack social media application built with React, Node.js, and MongoDB. Features include user authentication, real-time messaging, post creation with image uploads, likes, comments, and user profiles.</p>
                         <div class="flex justify-between">
                             <a href="#" class="text-blue-600 hover:text-blue-800" target="_blank">Live Demo</a>
-                            <a href="https://github.com/Ramyajdeekonda/social_app" class="text-blue-600 hover:text-blue-800" target="_blank">GitHub</a>
+                            <a href="#" class="text-blue-600 hover:text-blue-800" target="_blank">GitHub</a>
                         </div>
                     </div>
                 </div>
-                <!-- Add more project cards as needed -->
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition hover:-translate-y-2">
+                    <img src="project2-image.jpg" alt="Project 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">E-Commerce Platform</h3>
+                        <p class="text-gray-600 mb-4">A full-featured online store built with React, Node.js, and MongoDB. Features include user authentication, product management, and payment integration.</p>
+                        <div class="flex justify-between">
+                            <a href="#" class="text-blue-600 hover:text-blue-800" target="_blank">Live Demo</a>
+                            <a href="#" class="text-blue-600 hover:text-blue-800" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition hover:-translate-y-2">
+                    <img src="project3-image.jpg" alt="Project 3" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Task Management App</h3>
+                        <p class="text-gray-600 mb-4">A collaborative task management solution using Vue.js and Django. Includes real-time updates, team collaboration, and progress tracking features.</p>
+                        <div class="flex justify-between">
+                            <a href="#" class="text-blue-600 hover:text-blue-800" target="_blank">Live Demo</a>
+                            <a href="#" class="text-blue-600 hover:text-blue-800" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-white text-shadow">
+    <section id="skills" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">Skills</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -210,7 +248,7 @@
                         </div>
                         <div class="flex flex-col items-center gap-2">
                             <svg class="w-10 h-10 text-green-700 hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M11.146 0h1.832l-0.326 0.413 1.465-0.413h-2.971v0.413l1.465-0.413-0.326-0.413h1.832l-0.326 0.413 1.465-0.413h-2.971v0.413l1.465-0.413-0.326-0.413h1.832l-0.326 0.413 1.465-0.413h-2.971v0.413l1.465-0.413-0.326-0.413zM16.125 0h1.832l-0.326 0.413 1.465-0.413h-2.971v0.413l1.465-0.413-0.326-0.413h1.832l-0.326 0.413 1.465-0.413h-2.971v0.413l1.465-0.413-0.326-0.413zM21.104 0h1.832l-0.326 0.413 1.465-0.413h-2.971v0.413l1.465-0.413-0.326-0.413z"/>
+                                <path d="M11.146 0h1.832l-0.326 0.413 1.465-0.413h-2.971v0.413l1.465-0.413-0.326-0.413h1.832l-0.326 0.413 1.465-0.413h-2.971v0.413l1.465-0.413-0.326-0.413zM16.125 0h1.832l-0.326 0.413 1.465-0.413h-2.971v0.413l1.465-0.413-0.326-0.413h1.832l-0.326 0.413 1.465-0.413h-2.971v0.413l1.465-0.413-0.326-0.413zM21.104 0h1.832l-0.326 0.413 1.465-0.413h-2.971v0.413l1.465-0.413-0.326-0.413z"/>
                             </svg>
                             <span class="text-sm text-gray-600">Django</span>
                         </div>
@@ -271,7 +309,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-50 text-shadow">
+    <section id="contact" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">Contact Me</h2>
             <div class="max-w-3xl mx-auto">
@@ -300,7 +338,7 @@
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-white py-8 text-shadow">
+    <footer class="bg-gray-900 text-white py-8">
         <div class="text-center">
             <p>&copy; 2024 Ramya Jyothika. All rights reserved.</p>
         </div>
@@ -308,4 +346,4 @@
 
     <script src="script.js"></script>
 </body>
-</html>
+</html> 
