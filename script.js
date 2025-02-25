@@ -42,7 +42,8 @@ window.addEventListener('scroll', () => {
 
 let slideIndex = {
     'project1-slideshow': 0,
-    'project2-slideshow': 0
+    'project2-slideshow': 0,
+    'project3-slideshow': 0
 };
 let slideshowIntervals = {};
 
@@ -89,7 +90,7 @@ function showSlides(n, slideshowClass) {
 
 // Initialize all slideshows
 document.addEventListener('DOMContentLoaded', function() {
-    let slideshows = ['project1-slideshow', 'project2-slideshow'];
+    let slideshows = ['project1-slideshow', 'project2-slideshow', 'project3-slideshow'];
     slideshows.forEach(function(slideshow) {
         showSlides(0, slideshow);
     });
