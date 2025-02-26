@@ -39,7 +39,8 @@
         
         .project1-slideshow img,
         .project2-slideshow img,
-        .project3-slideshow img {
+        .project3-slideshow img,
+        .project4-slideshow img {
             transition: opacity 0.5s ease-in-out;
         }
     </style>
@@ -221,6 +222,35 @@
                         <div class="flex justify-between">
                             <a href="https://ramyajdeekonda.github.io/Music_app/" class="text-blue-600 hover:text-blue-800" target="_blank">Live Demo</a>
                             <a href="https://github.com/Ramyajdeekonda/Music_app" class="text-blue-600 hover:text-blue-800" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition hover:-translate-y-2">
+                    <div class="relative h-48">
+                        <div class="project4-slideshow">
+                            <img src="project4/S8.png" alt="" class="w-full h-48 object-cover">
+                            <img src="project4/S9.png" alt="" class="w-full h-48 object-cover hidden">
+                        </div>
+                        <!-- Navigation buttons -->
+                        <button class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70" onclick="changeSlide(-1, 'project4-slideshow')">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70" onclick="changeSlide(1, 'project4-slideshow')">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <!-- Dots -->
+                        <div class="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
+                            <span class="w-2 h-2 bg-white rounded-full opacity-50 cursor-pointer dot active" onclick="currentSlide(0, 'project4-slideshow')"></span>
+                            <span class="w-2 h-2 bg-white rounded-full opacity-50 cursor-pointer dot" onclick="currentSlide(1, 'project4-slideshow')"></span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Language Translator</h3>
+                        <p class="text-gray-600 mb-4">A versatile language translation app built with React and Google Translate API. Features include real-time translation, language detection, and text-to-speech functionality.</p>
+                        <div class="flex justify-between">
+                            <a href="https://ramyajdeekonda.github.io/Translator/" class="text-blue-600 hover:text-blue-800" target="_blank">Live Demo</a>
+                            <a href="https://github.com/Ramyajdeekonda/Translator" class="text-blue-600 hover:text-blue-800" target="_blank">GitHub</a>
                         </div>
                     </div>
                 </div>
